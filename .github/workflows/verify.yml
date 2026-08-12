@@ -1,0 +1,104 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          chmod +x elan-init.sh
+          ./elan-init.sh -y --default-toolchain "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Report toolchain
+        run: |
+          lean --version
+          lake --version
+
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+
+      - name: Build
+        run: lake build 2>&1 | tee build.log
+
+      - name: Check for sorry / admit
+        run: |
+          set -o pipefail
+          mkdir -p audit
+          if grep -RIn --include='*.lean' -E '\bsorry\b|\badmit\b' . --exclude-dir=.lake | tee audit/sorry.txt; then
+            echo "::error::found sorry/admit in the sources"
+            exit 1
+          fi
+          echo "no sorry/admit found" > audit/sorry.txt
+
+      - name: Check for suspect declarations
+        run: |
+          set -o pipefail
+          if grep -RIn --include='*.lean' -E '^\s*axiom\b|native_decide|implemented_by|\bunsafe\b' . --exclude-dir=.lake | tee audit/suspect.txt; then
+            echo "::error::found axiom / native_decide / implemented_by / unsafe in the sources"
+            exit 1
+          fi
+          echo "none found" > audit/suspect.txt
+
+      - name: Print axioms
+        run: |
+          set -o pipefail
+          lake env lean scripts/Audit.lean 2>&1 | tee audit/axioms.txt
+
+      - name: Parse axioms
+        run: |
+          set -o pipefail
+          # Flatten to one declaration per line, strip the permitted three, and
+          # report anything that remains.
+          tr '\n' ' ' < audit/axioms.txt \
+            | sed 's/'"'"'/\n'"'"'/g' \
+            | grep 'depends on axioms' \
+            | sed -e 's/propext//g' -e 's/Classical\.choice//g' -e 's/Quot\.sound//g' \
+                  -e 's/,//g' -e 's/\[ *\]//g' \
+            > audit/axioms-residue.txt || true
+          if grep -qE 'depends on axioms:\s*\[[^]]*[A-Za-z]' audit/axioms-residue.txt; then
+            echo "::error::non-standard axiom dependency detected"
+            grep -E 'depends on axioms:\s*\[[^]]*[A-Za-z]' audit/axioms-residue.txt
+            exit 1
+          fi
+          if grep -qi 'sorryAx\|error' audit/axioms.txt; then
+            echo "::error::sorryAx or an error appears in the axiom report"
+            exit 1
+          fi
+          echo "all audited declarations depend only on propext, Classical.choice, Quot.sound"
+
+      - name: Declaration census
+        run: |
+          {
+            echo "# Declaration census"
+            echo
+            echo "toolchain: $(cat lean-toolchain)"
+            echo
+            grep -rhoE '^(theorem|lemma|def|abbrev|noncomputable def|instance|structure|class)' RequestProject/*.lean \
+              | sort | uniq -c | sort -rn
+            echo
+            echo "## per file"
+            wc -l RequestProject/*.lean
+          } > audit/census.txt
+          cat audit/census.txt
+
+      - name: Upload audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit
+          path: |
+            audit/
+            build.log

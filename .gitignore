@@ -1,0 +1,25 @@
+# Lean / Lake
+/.lake/
+**/.lake/
+*.olean
+*.ilean
+*.trace
+*.hash
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+paper/*.pdf
+
+# editors / OS
+*~
+*.swp
+.DS_Store
+Thumbs.db
