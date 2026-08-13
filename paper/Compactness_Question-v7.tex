@@ -379,6 +379,25 @@ What is the least number of open orthogonality-free sets covering $S^2$? More ge
 
 {\bf Machine Assistance} This paper began as an informal note (essentially comprising sections 1 and 2 and a slightly mangled version of the $\omega_1$ example), shared between the authors in 2024. Recent dialogues with  Anthropic's Claude (July and August, 2026) pointed us to the relevant literature, and supplied Corollary 3 and the results of Sections 3, 4 and 5 (in particular, Theorem 1 and its Corollary), which we have checked carefully, and revised for readability.
 
+{\sloppy
+{\bf Verification} The mathematical content of this note has been formalized in Lean 4 against
+Mathlib (toolchain \texttt{v4.28.0}) and machine-checked, with no {\tt sorry}s and no axioms
+beyond Lean's standard three ({\tt propext}, {\tt Classical.choice}, {\tt Quot.sound}):
+Lemmas \ref{compactbounded} and \ref{finitecc} with their footnotes, Corollary \ref{metrizable},
+Proposition \ref{galois} with Corollary \ref{covers}, Corollary \ref{starcompact} and the failure
+of its converse, Remark \ref{dichotomy}, Theorem \ref{omegapower} and Corollary \ref{suffconds},
+the $\omega_1$ example of Remark \ref{omegaone}, Propositions \ref{preserve} and \ref{separable},
+Corollary \ref{metacompact}, the profile of a witness, the $\beta\omega$ construction of \S 4
+together with its conditional consequence, the implications of \S 5, the clique number of
+$S^{n-1}$, and the bound $\chiop(S^2,\perp) \leq 24$. Questions \ref{mainq} and \ref{sphereq},
+and the question of \S 5, are stated formally and left unresolved. Results quoted from the
+literature are not formalized; in particular the lower bound $\chi(S^2,\perp) = 4$ is not, so the
+formal sphere statement is $3 \leq \chiop(S^2,\perp) \leq 24$, and the $\leq 24$ bound is
+obtained from three explicit orthonormal frames of $\R^3$ in place of the genericity argument
+given above. The development is available at
+\texttt{https://github.com/\allowbreak DavidVFeldman/\allowbreak compactness-clique-size},
+archived at \texttt{https://doi.org/\allowbreak 10.5281/zenodo.21910510}.\par}
+
 
 
 
@@ -428,8 +447,7 @@ topological group, Fund.\ Math. {\bf 186} (2005), 1--24.
 
 \end{document}
 
-%{\bf Verification}{[Old --- to be updated]} 
-\tempout{The following have been formally verified in Lean 4 against Mathlib (toolchain \texttt{v4.28.0}), with no axioms beyond Lean's standard three: Lemmas \ref{compactbounded} and \ref{finitecc}, Proposition \ref{galois} with Corollary \ref{covers}, Proposition \ref{preserve}, the present theorem, clauses (i) and (iii) of Corollary \ref{suffconds}, the boundedness assertion of Remark \ref{cofinite}, the clique bound of Remark \ref{sphere}, and the two combinatorial lemmas underlying Remark \ref{betaomega} (splitting of bounded transversals inside an ultrafilter --- in a canonical, choice-free form via cell minima --- and the infinitude of selection-complement intersections). Hypotheses are formalized in the slightly stronger primitive forms actually consumed by the proofs; e.g., the present theorem is verified from ``every sequence in $X^{\omega}$ has a cluster point,'' which countable compactness of $X^{\omega}$ implies. Not formalized (out of commissioned scope): clause (ii) of Corollary \ref{suffconds}, Remark \ref{omegaone}, Corollary \ref{metacompact}, and the topological (as opposed to combinatorial) content of Remark \ref{betaomega}. Repository link to be added.}
+
 
 \tempout{The problem thus lives entirely within the van Douwen--Nov\'ak territory of countably compact spaces with badly behaved powers, a set-theoretically delicate region: the foundational ultrafilter technology is Ginsburg--Saks \cite{GS}; consistent examples of countably compact groups with non-countably-compact squares are classical; 
 %and Hru\v{s}\'ak--van Mill--Ramos-Garc\'ia--Shelah \cite{HvMRS} have produced examples in ZFC of countably compact topological groups with non-countably compact products, in the group category, answering van Douwen's 1980 question { [ref]} and Comfort's question { [ref]} on non-productivity of countable compactness. For calibration of what power can fail first: it is known that certain semigroup topologies have all {\em finite} powers countably compact while no topology on the same semigroup has countably compact $\omega$-th power \cite{BT}, so the gap between ``all finite powers'' and ``the $\omega$-th power'' in Theorem \ref{omegapower} is genuinely wide.
