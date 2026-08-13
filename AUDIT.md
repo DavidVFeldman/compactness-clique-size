@@ -67,7 +67,7 @@ each should be read before any sentence in the note asserts what has been verifi
     countable case used in Corollary 4(c) is formalized); the Hrušák–van Mill–Ramos-García–Shelah
     construction behind the second horn of Remark 3; the Holmsen–Lee remark; Godsil–Zaks.
 
-## Missing from the delivered tarball
+## Missing from the Aristotle archive
 
 The Aristotle report (`docs/ARISTOTLE_SUMMARY.md`, item 6) refers to a "Properties table" that
 was updated. No such file is present in the delivered archive; it exists only in the Aristotle
@@ -75,33 +75,12 @@ session. Request it if the table is wanted as a repository artifact.
 
 ## LaTeX housekeeping
 
-* Four references — `\ref{cofinite}`, `\ref{sphere}`, `\ref{betaomega}`, `\ref{profile}` — have
-  no corresponding `\label`. They occur only inside `\tempout{...}` (which expands to nothing) in
-  material placed after `\end{document}`, so they are inert; restoring any of that material
-  without adding the labels will produce undefined references.
-* Three fragments of the blue revision markup survive in the body and bibliography of v6
-  (the period after Corollary 3, and two bibliography items).
-* `\ref{metrizable}`, `\ref{dichotomy}` and `\ref{sphereq}` are defined but never cited.
-
-## Verification paragraph
-
-A drop-in replacement for the stale paragraph currently parked after `\end{document}`, using only
-labels that exist:
-
-```latex
-{\bf Verification} The mathematical content of this note has been formalized in Lean 4 against
-Mathlib (toolchain \texttt{v4.28.0}) and machine-checked, with no {\tt sorry}s and no axioms
-beyond Lean's standard three ({\tt propext}, {\tt Classical.choice}, {\tt Quot.sound}):
-Lemmas \ref{compactbounded} and \ref{finitecc} with their footnotes, Corollary \ref{metrizable},
-Proposition \ref{galois} with Corollary \ref{covers}, Corollary \ref{starcompact} and the failure
-of its converse, Remark \ref{dichotomy}, Theorem \ref{omegapower} and Corollary \ref{suffconds},
-the $\omega_1$ example of Remark \ref{omegaone}, Propositions \ref{preserve} and \ref{separable},
-Corollary \ref{metacompact}, the profile of a witness, the $\beta\omega$ construction of \S 4
-together with its conditional consequence, the implications of \S 5, the clique number of
-$S^{n-1}$, and the bound $\chiop(S^2,\perp) \leq 24$. Questions \ref{mainq} and \ref{sphereq}, and
-the question of \S 5, are stated formally and left unresolved. Results quoted from the literature
-are not formalized; in particular the lower bound $\chi(S^2,\perp) = 4$ is not, so the formal
-sphere statement is $3 \leq \chiop(S^2,\perp) \leq 24$, and the $\leq 24$ bound is obtained from
-three explicit orthonormal frames of $\R^3$ in place of the genericity argument given above. The
-development is available at \texttt{https://github.com/DavidVFeldman/compactness-clique-size},
-archived at \texttt{https://doi.org/10.5281/zenodo.21910511}.
+* One reference, `\ref{profile}`, has no corresponding `\label`. It occurs only inside the
+  `\tempout{...}` block (which expands to nothing) placed after `\end{document}`, so it is
+  inert; reviving that material without adding the label will produce an undefined reference.
+  The other three such references went out with the stale verification block in v7.
+* The three fragments of blue revision markup that survived into v6 (the period after
+  Corollary 3, and the Bernstein and Holmsen–Lee bibliography items) were cleared in v7; only
+  the `\blue` macro definition remains in the preamble.
+* Every `\label` in the body of v7 is cited and every `\ref` in the body is defined; the paper
+  compiles with no undefined references.

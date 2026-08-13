@@ -10,7 +10,7 @@ authors:
   - family-names: Wilce
     given-names: Alexander
     affiliation: "Susquehanna University"
-    # orcid: "https://orcid.org/0000-0001-5987-1327"  
+    orcid: "https://orcid.org/0000-0001-5987-1327"
 version: 1.0.1
 date-released: "2026-08-12"
 doi: "10.5281/zenodo.21910510"
@@ -20,7 +20,7 @@ identifiers:
     description: "Concept DOI, resolving to the latest version"
   - type: doi
     value: "10.5281/zenodo.21910511"
-    description: "Version DOI for release v1.0.0"
+    description: "Version DOI for release v1.0"
 repository-code: "https://github.com/DavidVFeldman/compactness-clique-size"
 abstract: >-
   A topological space has finite, respectively bounded, cliques iff every closed

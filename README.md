@@ -1,5 +1,8 @@
 # A Note on Compactness and Clique Size
 
+[![verify](https://github.com/DavidVFeldman/compactness-clique-size/actions/workflows/verify.yml/badge.svg)](https://github.com/DavidVFeldman/compactness-clique-size/actions/workflows/verify.yml)
+[![DOI](https://zenodo.org/badge/1332506286.svg)](https://doi.org/10.5281/zenodo.21910510)
+
 LaTeX source and Lean 4 formalization accompanying the note *A Note on Compactness and Clique
 Size*, by David V. Feldman (University of New Hampshire) and Alexander Wilce (Susquehanna
 University).
