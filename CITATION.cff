@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software or the accompanying note, please cite it as below."
+title: "A Note on Compactness and Clique Size — paper and Lean 4 formalization"
+type: software
+authors:
+  - family-names: Feldman
+    given-names: "David V."
+    affiliation: "University of New Hampshire, Durham"
+    orcid: "https://orcid.org/0000-0001-6943-4833"
+  - family-names: Wilce
+    given-names: Alexander
+    affiliation: "Susquehanna University"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # add Alex's ORCID
+version: 1.0.0
+date-released: "2026-08-12"
+doi: "10.5281/zenodo.21910510"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21910510"
+    description: "Concept DOI, resolving to the latest version"
+  - type: doi
+    value: "10.5281/zenodo.21910511"
+    description: "Version DOI for release v1.0.0"
+repository-code: "https://github.com/DavidVFeldman/compactness-clique-size"
+abstract: >-
+  A topological space has finite, respectively bounded, cliques iff every closed
+  irreflexive binary relation on it has cliques of finite, respectively bounded
+  finite, size. Every compact space has bounded cliques; having finite cliques
+  implies limit-point compactness and is implied by omega-limit point compactness,
+  so that for T1 spaces it is equivalent to countable compactness. Whether some
+  countably compact space has finite but unbounded cliques is the main question
+  raised in the note. This repository contains the note together with its Lean 4
+  formalization, machine-checked against Mathlib v4.28.0 with no sorries and no
+  axioms beyond propext, Classical.choice and Quot.sound.
+keywords:
+  - topology
+  - compactness
+  - countable compactness
+  - orthogonality relation
+  - clique number
+  - chromatic number
+  - star-covering properties
+  - Lean 4
+  - Mathlib
+  - formalized mathematics
