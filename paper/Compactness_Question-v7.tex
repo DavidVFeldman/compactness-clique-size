@@ -162,7 +162,7 @@ Is there a countably compact $T_1$ (or Hausdorff) space with a closed orthogonal
 \end{question}
 
 
-\begin{remark} It is not hard to find non-$T_1$ lp-compact spaces having infinite cliques (consider, e.g., $\N \times \{0,1\}$ with $\N$ discrete and $\{0,1\}$ indiscrete, and 
+\begin{remark}\label{nonT1} It is not hard to find non-$T_1$ lp-compact spaces having infinite cliques (consider, e.g., $\N \times \{0,1\}$ with $\N$ discrete and $\{0,1\}$ indiscrete, and 
 consider the relation of being in different fibres over $\N$). However, we do not know whether, in the general, non-$T_1$ setting, $\omega$-lp compactness is necessary for finite cliques.  The sufficiency of $\omega$-lp compactness gives us a non-$T_1$ version of Question 1: 
 is there an $\omega$-lp compact space hosting a closed, irreflexive relation with cliques of arbitrary 
 size? \\
@@ -213,7 +213,7 @@ if $F$ is a maximal $\mathcal U$-separated set (these
 exist by Zorn), we must have $\st(F,{\mathcal U}) = X$. Thus, since a ${\mathcal U}$-separated set is a clique 
 of $\perp_{\mathcal U}$, we have 
 
-\begin{corollary}\label{starcompact} A space with finite cliques is strongly star-compact{\blue .}
+\begin{corollary}\label{starcompact} A space with finite cliques is strongly star-compact.
 \end{corollary} 
 
 For $T_1$ spaces, this reduces to the known 
@@ -385,12 +385,14 @@ Mathlib (toolchain \texttt{v4.28.0}) and machine-checked, with no {\tt sorry}s a
 beyond Lean's standard three ({\tt propext}, {\tt Classical.choice}, {\tt Quot.sound}):
 Lemmas \ref{compactbounded} and \ref{finitecc} with their footnotes, Corollary \ref{metrizable},
 Proposition \ref{galois} with Corollary \ref{covers}, Corollary \ref{starcompact} and the failure
-of its converse, Remark \ref{dichotomy}, Theorem \ref{omegapower} and Corollary \ref{suffconds},
+of its converse, the dichotomy of Remark \ref{dichotomy}, Theorem \ref{omegapower} and Corollary \ref{suffconds},
 the $\omega_1$ example of Remark \ref{omegaone}, Propositions \ref{preserve} and \ref{separable},
 Corollary \ref{metacompact}, the profile of a witness, the $\beta\omega$ construction of \S 4
 together with its conditional consequence, the implications of \S 5, the clique number of
-$S^{n-1}$, and the bound $\chiop(S^2,\perp) \leq 24$. Questions \ref{mainq} and \ref{sphereq},
-and the question of \S 5, are stated formally and left unresolved. Results quoted from the
+$S^{n-1}$, and the bound $\chiop(S^2,\perp) \leq 24$. Question \ref{mainq}, the question of \S 5
+as to strictness of the second implication, and the two subsidiary questions of
+Remark \ref{nonT1}, are stated formally and left unresolved; Question \ref{sphereq}, which asks
+for a value rather than a truth value, is not formalized. Results quoted from the
 literature are not formalized; in particular the lower bound $\chi(S^2,\perp) = 4$ is not, so the
 formal sphere statement is $3 \leq \chiop(S^2,\perp) \leq 24$, and the $\leq 24$ bound is
 obtained from three explicit orthonormal frames of $\R^3$ in place of the genericity argument
@@ -407,13 +409,12 @@ archived at \texttt{https://doi.org/\allowbreak 10.5281/zenodo.21910510}.\par}
 
 \bibitem{AD} R. Arens and J. Dugundji, Remark on the concept of compactness, Port. Math. {\bf 9} (1950), 141--143.
 
-\bibitem{Bern} A. R. Bernstein, A new kind of compactness for topological spaces, {\blue Fund.\ Math.}\ {\bf 66} (1970), 185--193.
+\bibitem{Bern} A. R. Bernstein, A new kind of compactness for topological spaces, Fund.\ Math.\ {\bf 66} (1970), 185--193.
 
 \bibitem{Cao} J.~Cao, Recent progress in some aspects of star covering properties, RIMS K\^oky\^uroku {\bf 1248} (2002), 12--17.
 
 
-\bibitem{HL} A.~F.~Holmsen and S.~Lee, Orthogonal colorings of the sphere, Mathematika {\bf 62} (2016), 
-{\blue 492--501}
+\bibitem{HL} A.~F.~Holmsen and S.~Lee, Orthogonal colorings of the sphere, Mathematika {\bf 62} (2016), 492--501.
 
 \bibitem{vDRRT} E.~K.~van Douwen, G.~M.~Reed, A.~W.~Roscoe, and I.~J.~Tree, Star covering properties, Topology Appl.\ {\bf 39} (1991), 71--103.
 

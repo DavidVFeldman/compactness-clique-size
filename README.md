@@ -14,7 +14,7 @@ cliques is the main open question of the note.
 
 | Path | Description |
 | --- | --- |
-| `paper/Compactness_Question-v6.tex` | The note. |
+| `paper/Compactness_Question-v7.tex` | The note. |
 | `RequestProject/` | The Lean 4 library. `Main.lean` imports everything and indexes the sections. |
 | `scripts/Audit.lean` | `#print axioms` for the headline results. |
 | `.github/workflows/verify.yml` | CI: build, `sorry` scan, axiom audit, artifact upload. |

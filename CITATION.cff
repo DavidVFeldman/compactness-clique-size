@@ -10,8 +10,8 @@ authors:
   - family-names: Wilce
     given-names: Alexander
     affiliation: "Susquehanna University"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"   # add Alex's ORCID
-version: 1.0.0
+    # orcid: "https://orcid.org/0000-0001-5987-1327"  
+version: 1.0.1
 date-released: "2026-08-12"
 doi: "10.5281/zenodo.21910510"
 identifiers:
