@@ -103,5 +103,5 @@ the question of \S 5, are stated formally and left unresolved. Results quoted fr
 are not formalized; in particular the lower bound $\chi(S^2,\perp) = 4$ is not, so the formal
 sphere statement is $3 \leq \chiop(S^2,\perp) \leq 24$, and the $\leq 24$ bound is obtained from
 three explicit orthonormal frames of $\R^3$ in place of the genericity argument given above. The
-development is available at [repository link], archived at [DOI].
-```
+development is available at \texttt{https://github.com/DavidVFeldman/compactness-clique-size},
+archived at \texttt{https://doi.org/10.5281/zenodo.21910511}.
